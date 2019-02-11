@@ -19,6 +19,7 @@ def process(filename):
 
     # Encode the text
     encoded = np.array([char2int[ch] for ch in all_quotes])
+    return chars, encoded
 
 def one_hot_encode(arr, n_labels):
     
@@ -30,7 +31,8 @@ def one_hot_encode(arr, n_labels):
     
     # Finally reshape it to get back to the original array
     one_hot = one_hot.reshape((*arr.shape, n_labels))
-    
+
+
 # Defining method to make mini-batches for training
 def get_batches(arr, batch_size, seq_length):
     '''Create a generator that returns batches of size

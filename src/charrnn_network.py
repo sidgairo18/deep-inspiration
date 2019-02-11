@@ -4,6 +4,13 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
+train_on_gpu = torch.cuda.is_available()                                
+if(train_on_gpu):                                                       
+    print('Training on GPU!')                                           
+else:                                                                   
+    print('No GPU available, training on CPU; consider making n_epochs very small.')
+
+
 # Declaring the model
 class CharRNN(nn.Module):
     
@@ -58,8 +65,6 @@ class CharRNN(nn.Module):
         weight = next(self.parameters()).data
         
         if (train_on_gpu):
-            hidden = (weight.new(self.n_layers, batch_size, self.n_hidden).zero_().cuda(),
-                  weight.new(self.n_layers, batch_size, self.n_hidden).zero_().cuda())
+            hidden = (weight.new(self.n_layers, batch_size, self.n_hidden).zero_().cuda(),weight.new(self.n_layers, batch_size, self.n_hidden).zero_().cuda())
         else:
-            hidden = (weight.new(self.n_layers, batch_size, self.n_hidden).zero_(),
-                      weight.new(self.n_layers, batch_size, self.n_hidden).zero_()
+            hidden = (weight.new(self.n_layers, batch_size, self.n_hidden).zero_(),weight.new(self.n_layers, batch_size, self.n_hidden).zero_())
