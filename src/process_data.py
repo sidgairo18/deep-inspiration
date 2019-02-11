@@ -32,6 +32,8 @@ def one_hot_encode(arr, n_labels):
     # Finally reshape it to get back to the original array
     one_hot = one_hot.reshape((*arr.shape, n_labels))
 
+    return one_hot
+
 
 # Defining method to make mini-batches for training
 def get_batches(arr, batch_size, seq_length):
