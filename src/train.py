@@ -48,6 +48,8 @@ def train(net, data, epochs=10, batch_size=10, seq_length=50, lr=0.001, clip=5, 
     for e in range(epochs):
         # initialize hidden state
         h = net.init_hidden(batch_size)
+
+
         
         for x, y in get_batches(data, batch_size, seq_length):
             counter += 1
@@ -176,7 +178,7 @@ def predict(net, char, h=None, top_k=None):
         return net.int2char[char], h
         
 # Declaring a method to generate new text
-def sample(net, size, prime='The', top_k=None):
+def sample(net, size, prime='the', top_k=None):
         
     if(train_on_gpu):
         net.cuda()
@@ -201,4 +203,4 @@ def sample(net, size, prime='The', top_k=None):
     return ''.join(chars)
     
 # Generating new text
-print(sample(net, 1000, prime='A', top_k=5))
+print(sample(net, 1000, prime='a', top_k=5))
