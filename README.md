@@ -35,4 +35,7 @@ Training Data are ~36K quotes taken from [Quotables](https://github.com/alvation
 
 * Can be found in /models directory
 
+## TODO Improvements
 
+* Train at word level instead of character level.
+* Fine tune (Transfer Learn) with Quotations from selected genres/types.
